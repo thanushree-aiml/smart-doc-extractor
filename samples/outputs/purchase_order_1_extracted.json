@@ -1,0 +1,56 @@
+{
+  "document_type": "invoice",
+  "document_id": null,
+  "date": null,
+  "vendor": {
+    "name": "SteelMart Traders",
+    "address": "No. 22, Metal Market, Nagasandra, Bengaluru 560073",
+    "contact": "9900112233",
+    "gstin": "29AABCS4321D1Z8"
+  },
+  "buyer": {
+    "name": "BuildRight Construction Ltd.",
+    "address": "Plot No. 7, Industrial Area, Hosur Road, Bengaluru 560068",
+    "gstin": "29AABCB9876C1Z1"
+  },
+  "line_items": [
+    {
+      "description": "TMT Steel Bar Fe500D",
+      "quantity": 5.0,
+      "unit_price": 62000.0,
+      "total": 310000.0
+    },
+    {
+      "description": "Binding Wire 20kg",
+      "quantity": 20.0,
+      "unit_price": 900.0,
+      "total": 18000.0
+    },
+    {
+      "description": "River Sand Fine",
+      "quantity": 500.0,
+      "unit_price": 65.0,
+      "total": 32500.0
+    },
+    {
+      "description": "OPC Cement 53 Grade",
+      "quantity": 100.0,
+      "unit_price": 420.0,
+      "total": 42000.0
+    },
+    {
+      "description": "Waterproof Compound 1L",
+      "quantity": 50.0,
+      "unit_price": 280.0,
+      "total": 14000.0
+    }
+  ],
+  "subtotal": 416500.0,
+  "tax": 74970.0,
+  "tax_rate_percent": null,
+  "total": null,
+  "currency": "INR",
+  "payment_method": null,
+  "notes": null,
+  "validation_warnings": []
+}

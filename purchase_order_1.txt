@@ -1,0 +1,47 @@
+============================================
+           PURCHASE ORDER
+============================================
+Purchase Order No : PO-2024-1087
+PO Date           : 10/03/2024
+Expected Delivery : 25/03/2024
+
+BUYER (Ship To):
+BuildRight Construction Ltd.
+Plot No. 7, Industrial Area,
+Hosur Road, Bengaluru - 560068
+GSTIN: 29AABCB9876C1Z1
+Contact: purchase@buildright.in
+
+VENDOR (Supply From):
+SteelMart Traders
+No. 22, Metal Market, Nagasandra,
+Bengaluru - 560073
+GSTIN: 29AABCS4321D1Z8
+Contact: sales@steelmart.co.in | 9900112233
+
+--------------------------------------------
+ITEMS ORDERED
+--------------------------------------------
+#  | Item Description        | Unit | Qty  | Rate     | Amount
+---|-------------------------|------|------|----------|----------
+1  | TMT Steel Bar (Fe500D)  | MT   |  5   | 62,000   | 3,10,000
+2  | Binding Wire (20kg)     | Bag  | 20   |    900   |  18,000
+3  | River Sand (Fine)       | CFT  | 500  |     65   |  32,500
+4  | OPC Cement 53 Grade     | Bag  | 100  |    420   |  42,000
+5  | Waterproof Compound 1L  | Nos  | 50   |    280   |  14,000
+--------------------------------------------
+Subtotal                           : 4,16,500
+CGST @ 9%                          :   37,485
+SGST @ 9%                          :   37,485
+Total GST                          :   74,970
+============================================
+GRAND TOTAL                        : 4,91,470
+============================================
+
+Payment Terms : 50% advance, 50% on delivery
+Delivery Terms: Ex-Works, Bengaluru
+Authorised By : Vikram Nair (Procurement Head)
+
+Note: Please confirm order receipt within 24 hours.
+Prices inclusive of loading charges.
+============================================

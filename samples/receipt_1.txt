@@ -1,0 +1,27 @@
+MORE Supermarket
+Koramangala, Bengaluru
+Ph: 080-6789-0123
+
+Receipt No: RCP-78432
+Date: 22-03-2024
+Time: 11:34 AM
+
+ITEM                  QTY    UNIT PRICE    TOTAL
+Amul Butter 500g       1       275.00      275.00
+Tata Salt 1kg          2        20.00       40.00
+Bread Brown            1        55.00       55.00
+Eggs 12 pack           1       102.00      102.00
+Maggi Noodles 4pk      2        60.00      120.00
+Colgate 200g           1        98.00       98.00
+Surf Excel 1kg         1       230.00      230.00
+Biscuits Parle G       3        10.00       30.00
+Toor Dal 1kg           1       165.00      165.00
+Tomatoes loose         1        42.50       42.50
+
+Subtotal   : 1157.50
+GST 5pct   :   57.88
+TOTAL      : 1215.38
+
+Cash Paid  : 1300.00
+Change     :   84.62
+Payment    : CASH

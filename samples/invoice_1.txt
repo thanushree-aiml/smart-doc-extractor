@@ -1,0 +1,53 @@
+=====================================
+        TAX INVOICE
+=====================================
+
+From:
+TechSupply Pvt. Ltd.
+42, Electronics Complex, Phase 2,
+Bengaluru - 560100, Karnataka
+GSTIN: 29AABCT1234A1Z5
+Contact: +91-80-4567-8901
+Email: billing@techsupply.in
+
+To:
+Infovision Systems Pvt. Ltd.
+18, MG Road, Bengaluru - 560001
+GSTIN: 29AACFI5678B1Z3
+
+Invoice No  : INV-2024-00892
+Invoice Date: 15/03/2024
+Due Date    : 15/04/2024
+
+-------------------------------------
+ITEMS
+-------------------------------------
+
+Sl. | Description              | Qty | Unit Price | Amount
+----|--------------------------|-----|------------|--------
+ 1  | Laptop - Dell Inspiron   |   2 |  55,000.00 | 1,10,000.00
+ 2  | Wireless Mouse (Logitech)|   5 |   1,200.00 |   6,000.00
+ 3  | USB-C Hub (7-port)       |   3 |   2,500.00 |   7,500.00
+ 4  | HDMI Cable 2m            |  10 |     350.00 |   3,500.00
+ 5  | Laptop Bag (15.6 inch)   |   2 |   1,800.00 |   3,600.00
+
+-------------------------------------
+Subtotal                : 1,30,600.00
+CGST (9%)               :    11,754.00
+SGST (9%)               :    11,754.00
+Total GST (18%)         :    23,508.00
+-------------------------------------
+TOTAL AMOUNT            : 1,54,108.00
+-------------------------------------
+
+Payment Method: Bank Transfer (NEFT)
+Bank: HDFC Bank
+Account: XXXX-XXXX-4521
+
+Terms & Conditions:
+- Payment due within 30 days of invoice date.
+- Goods once sold will not be taken back.
+- Subject to Bengaluru jurisdiction.
+
+Authorised Signatory: Ramesh Kumar (MD)
+=====================================
