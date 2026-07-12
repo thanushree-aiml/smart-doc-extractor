@@ -1,128 +1,207 @@
-# 📄 Document Data Extractor Agent
+# Smart Document Extractor Agent
 
-An AI-powered agent that extracts structured JSON from messy financial documents — invoices, receipts, and purchase orders — with automatic sanity checks and validation.
+An AI-powered document extraction system that converts unstructured financial documents into structured JSON using Large Language Models (LLMs). The application supports invoices, receipts, and purchase orders while performing schema validation and financial sanity checks to improve the reliability and consistency of extracted data.
 
-Built for the **Rooman AI Challenge — 24-Hour AI Agent Challenge**
-
----
-
-## What It Does
-
-- Reads PDF, TXT, or image documents
-- Extracts key fields: vendor, buyer, line items, totals, dates, GST, payment method
-- Validates the output using Pydantic schemas
-- Runs automatic sanity checks (line items sum, subtotal + tax = total, date format)
-- Outputs clean, structured JSON
-- Works across multiple document layouts (invoice, receipt, purchase order)
+Developed as part of the **Rooman AI Challenge – 24-Hour AI Agent Challenge**.
 
 ---
 
-## Tech Stack
+# Table of Contents
 
-| Component | Tool |
-|---|---|
-| LLM | Groq API (llama3-70b-8192) |
-| PDF Reading | pdfplumber |
-| Image OCR | pytesseract |
-| Validation | Pydantic v2 |
-| CLI Display | Rich |
-| Environment | python-dotenv |
+- Overview
+- Features
+- System Architecture
+- Technology Stack
+- Project Structure
+- Installation
+- Configuration
+- Usage
+- Sample Output
+- Validation
+- Design Decisions
+- Limitations
+- Future Improvements
+- Requirements
+- Author
+- License
 
 ---
 
-## Project Structure
+# Overview
+
+The Smart Document Extractor Agent automates the extraction of structured information from financial documents. Instead of manually parsing invoices, receipts, or purchase orders, the system leverages an LLM to identify important business fields and returns standardized JSON output suitable for downstream processing.
+
+The extracted output is validated using Pydantic models, followed by sanity checks to ensure numerical consistency and data integrity.
+
+---
+
+# Features
+
+- Extracts structured information from invoices, receipts, and purchase orders
+- Supports text files, PDF documents, and image-based documents
+- Converts unstructured document content into structured JSON
+- Performs schema validation using Pydantic
+- Executes automatic financial sanity checks
+- Normalizes dates into ISO format (`YYYY-MM-DD`)
+- Detects missing mandatory fields
+- Identifies inconsistencies in extracted totals
+- Command-line interface for processing individual or multiple documents
+
+---
+
+# System Architecture
 
 ```
-document-data-extractor/
-├── main.py                    # CLI entry point
+Input Document
+        │
+        ▼
+Document Reader
+(Text / PDF / OCR)
+        │
+        ▼
+LLM Extraction Engine
+(Groq Llama 3)
+        │
+        ▼
+Schema Validation
+(Pydantic)
+        │
+        ▼
+Sanity Checks
+        │
+        ▼
+Structured JSON Output
+```
+
+---
+
+# Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Programming Language | Python 3.12+ |
+| Large Language Model | Groq API (Llama 3 70B 8192) |
+| PDF Processing | pdfplumber |
+| OCR | pytesseract |
+| Data Validation | Pydantic v2 |
+| CLI Interface | Rich |
+| Environment Management | python-dotenv |
+
+---
+
+# Project Structure
+
+```
+smart-doc-extractor/
+│
 ├── agent/
-│   ├── extractor.py           # Core LLM extraction logic
-│   ├── validator.py           # Pydantic schemas + sanity checks
-│   └── reader.py              # PDF / image / text reader
+│   ├── extractor.py
+│   ├── reader.py
+│   └── validator.py
+│
 ├── prompts/
-│   └── system_prompt.txt      # LLM instructions
+│   └── system_prompt.txt
+│
 ├── samples/
-│   ├── invoice_1.txt          # Sample GST invoice
-│   ├── receipt_1.txt          # Sample supermarket receipt
-│   ├── purchase_order_1.txt   # Sample purchase order
-│   └── outputs/               # Extracted JSON results
+│   ├── invoice_1.txt
+│   ├── receipt_1.txt
+│   ├── purchase_order_1.txt
+│   └── outputs/
+│
+├── main.py
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Setup Instructions
+# Installation
 
-### 1. Clone the repository
+## Clone the Repository
 
 ```bash
-git clone https://github.com/thanushreevn/document-data-extractor.git
-cd document-data-extractor
+git clone https://github.com/thanushree-aiml/smart-doc-extractor.git
+cd smart-doc-extractor
 ```
 
-### 2. Create and activate a virtual environment
+## Create a Virtual Environment
+
+### macOS / Linux
 
 ```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Mac / Linux
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Install dependencies
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Get a Groq API key
+---
 
-- Sign up free at [console.groq.com](https://console.groq.com)
-- Create an API key
+# Configuration
 
-### 5. Configure environment
+Create a `.env` file in the project root directory.
 
-Create a `.env` file in the project root:
-
-```
-GROQ_API_KEY=your_groq_api_key_here
+```env
+GROQ_API_KEY=your_groq_api_key
 ```
 
-> ⚠️ Never commit your `.env` file. It is already in `.gitignore`.
+The `.env` file is excluded from version control through `.gitignore` and should never be committed to the repository.
 
 ---
 
-## Running the Agent
+# Usage
 
-### Process a single file
+## Process a Single Document
 
 ```bash
 python main.py --file samples/invoice_1.txt
+```
+
+```bash
 python main.py --file samples/receipt_1.txt
+```
+
+```bash
 python main.py --file samples/purchase_order_1.txt
 ```
 
-### Run on all sample files at once
+## Process All Sample Documents
 
 ```bash
 python main.py --demo
 ```
 
-### Process your own document
+## Process a Custom Document
 
 ```bash
-python main.py --file path/to/your/document.pdf
+python main.py --file path/to/document.pdf
 ```
 
 ---
 
-## Sample Output
+# Supported Document Types
 
-### Input: `invoice_1.txt` (GST Invoice)
+- Invoice
+- Receipt
+- Purchase Order
+
+The system can be extended to support additional document formats by introducing new validation schemas and prompt instructions.
+
+---
+
+# Sample Output
 
 ```json
 {
@@ -131,86 +210,103 @@ python main.py --file path/to/your/document.pdf
   "date": "2024-03-15",
   "vendor": {
     "name": "TechSupply Pvt. Ltd.",
-    "address": "42, Electronics Complex, Phase 2, Bengaluru - 560100, Karnataka",
-    "contact": "+91-80-4567-8901",
     "gstin": "29AABCT1234A1Z5"
   },
   "buyer": {
-    "name": "Infovision Systems Pvt. Ltd.",
-    "address": "18, MG Road, Bengaluru - 560001",
-    "gstin": "29AACFI5678B1Z3"
+    "name": "Infovision Systems Pvt. Ltd."
   },
-  "line_items": [
-    { "description": "Laptop - Dell Inspiron", "quantity": 2, "unit_price": 55000.0, "total": 110000.0 },
-    { "description": "Wireless Mouse (Logitech)", "quantity": 5, "unit_price": 1200.0, "total": 6000.0 },
-    { "description": "USB-C Hub (7-port)", "quantity": 3, "unit_price": 2500.0, "total": 7500.0 },
-    { "description": "HDMI Cable 2m", "quantity": 10, "unit_price": 350.0, "total": 3500.0 },
-    { "description": "Laptop Bag (15.6 inch)", "quantity": 2, "unit_price": 1800.0, "total": 3600.0 }
-  ],
   "subtotal": 130600.0,
   "tax": 23508.0,
-  "tax_rate_percent": 18.0,
   "total": 154108.0,
   "currency": "INR",
-  "payment_method": "Bank Transfer (NEFT)",
   "validation_warnings": []
 }
 ```
 
 ---
 
-## Sanity Checks
+# Validation
 
-The agent automatically validates:
+The application performs multiple validation and consistency checks before producing the final output.
 
-| Check | What It Does |
-|---|---|
-| Line items sum | Sum of all item totals must ≈ subtotal (±₹2 tolerance) |
-| Total check | Subtotal + tax must ≈ total (±₹2 tolerance) |
-| Date format | Normalizes all dates to ISO format (YYYY-MM-DD) |
-| Document type | Must be one of: invoice, receipt, purchase_order |
-| Vendor presence | Warns if vendor name not found |
-| Empty line items | Warns if total exists but no items extracted |
-
----
-
-## Design Decisions & Tradeoffs
-
-### Why Groq + llama3-70b?
-- Free tier with generous rate limits — ideal for a 24-hour challenge
-- llama3-70b is strong at structured extraction tasks with zero-shot prompting
-- Low latency (~1–2s per document) vs OpenAI GPT-4
-
-### Why pdfplumber over PyPDF2?
-- pdfplumber preserves table structure — critical for line-item extraction in invoices
-- PyPDF2 often merges table columns into a single jumbled string
-
-### Why Pydantic v2?
-- Type-safe schema definition with automatic coercion
-- `@model_validator` enables cross-field sanity checks in one place
-- Cleaner than manual dict validation
-
-### Why temperature=0.0?
-- Extraction is a deterministic task — we want consistent, reproducible outputs
-- Higher temperature introduces unnecessary randomness in field values
-
-### Limitations
-- **Scanned PDFs**: pdfplumber cannot read image-based (scanned) PDFs — requires pytesseract OCR, which depends on Tesseract being installed
-- **Context window**: llama3-70b has an 8192 token limit; very long multi-page documents are truncated
-- **Complex layouts**: Highly stylized or multi-column PDF layouts may not extract cleanly
-- **Currency detection**: Defaults to INR; international documents may need manual currency hints
-
-### What I'd Add with More Time
-- Vision model support (Claude claude-sonnet-4-6 or GPT-4V) for scanned/image PDFs
-- Confidence score per extracted field
-- A simple Streamlit or FastAPI UI for drag-and-drop document upload
-- Batch processing with a summary CSV of all extractions
-- Unit tests for each validator and sanity check
+| Validation | Description |
+|------------|-------------|
+| Schema Validation | Ensures extracted fields conform to the defined Pydantic model |
+| Line Item Validation | Confirms that the sum of all line items matches the subtotal |
+| Total Validation | Verifies that subtotal plus tax equals the final total |
+| Date Normalization | Converts dates into ISO (`YYYY-MM-DD`) format |
+| Required Field Validation | Detects missing vendor or document information |
+| Document Type Validation | Restricts output to supported document categories |
+| Empty Line Item Detection | Warns when totals exist but no line items are extracted |
 
 ---
 
-## Author
+# Design Decisions
+
+## Large Language Model
+
+The project uses **Groq's Llama 3 70B** model because it provides fast inference, strong zero-shot extraction capabilities, and a generous developer tier suitable for rapid prototyping.
+
+## PDF Processing
+
+`pdfplumber` was selected because it preserves table structures significantly better than traditional PDF parsing libraries, improving invoice line-item extraction.
+
+## Data Validation
+
+Pydantic v2 provides structured schema validation, automatic type conversion, and cross-field validation, reducing the need for manual validation logic.
+
+## Deterministic Generation
+
+The model operates with a temperature of **0.0** to ensure deterministic and reproducible extraction results.
+
+---
+
+# Limitations
+
+- OCR accuracy depends on the quality of scanned documents.
+- Very large documents may exceed the model's context window.
+- Complex multi-column layouts may require additional preprocessing.
+- Currency detection currently defaults to INR.
+
+---
+
+# Future Improvements
+
+- Vision-language model support for scanned documents
+- Confidence scores for extracted fields
+- FastAPI REST API
+- Streamlit-based web interface
+- Batch processing for multiple documents
+- Comprehensive unit and integration tests
+- Docker support
+- GitHub Actions CI/CD pipeline
+
+---
+
+# Requirements
+
+- Python 3.12 or later
+- Groq API Key
+- Tesseract OCR (required for image-based documents)
+
+Install all dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# Author
 
 **Thanushree V N**
-B.E. in Artificial Intelligence & Machine Learning (VTU, 2026)
-# smart-doc-extractor
+
+Bachelor of Engineering in Artificial Intelligence and Machine Learning (VTU)
+
+GitHub: https://github.com/thanushree-aiml
+
+---
+
+# License
+
+This project is intended for educational, research, and demonstration purposes.
